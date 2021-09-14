@@ -38,6 +38,8 @@ public static List<StateCvsCensusData> stateCensusList = new ArrayList<>();
 			}
 	        catch(FileNotFoundException e) {
 	        throw new StateCensusException(e.getMessage(),StateCensusException.ExceptionType.File_Not_Found);
-	        }
+	        }catch(IllegalStateException  e) {
+				throw new StateCensusException(e.getMessage(),StateCensusException.ExceptionType.Parse_Error);
+			}
 	}		
 }
