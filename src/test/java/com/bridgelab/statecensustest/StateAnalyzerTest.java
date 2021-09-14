@@ -30,4 +30,13 @@ public class StateAnalyzerTest {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void givenCsv_WhenLoadedIfIncorrectHeaderRaiseException_ShouldReturnException() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(29, stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();e.getMessage();
+		}
+	}
 }
