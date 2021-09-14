@@ -30,19 +30,14 @@ public class StateAnalyzerTest {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
+	
 	
 	@Test
-	public void ifCsvFileNotCorrect_throwException_CSVFileIsNotCorrect() throws Exception {
-=======
-	@Test
 	public void givenCsv_WhenLoadedIfIncorrectHeaderRaiseException_ShouldReturnException() throws Exception {
->>>>>>> UC1
 		try {
 			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
 			Assert.assertEquals(29, stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
 		}catch(StateCensusException e) {
-<<<<<<< HEAD
 			e.printStackTrace();
 		}
 	}
@@ -62,9 +57,50 @@ public class StateAnalyzerTest {
 			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
 			Assert.assertEquals(29,stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
 		}catch(StateCensusException e) {
-=======
->>>>>>> UC1
+
 			e.printStackTrace();e.getMessage();
 		}
 	}
+	
+	// state code data
+	@Test
+	public void ShouldReturnSize_ifDataCorrect_ForStateCensus() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(37, stateCensusAnalyser.loadDataForState("./src/main/resources/StateCode.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void ifCSVFileIsDetected_ForStateCensus_willReturnRecords() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(37, stateCensusAnalyser.loadDataForState("./src/main/resources/StateCode.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void ifDelimiterIncorrect_forState_WillReturnCustomException() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(37, stateCensusAnalyser.loadDataForState("./src/main/resources/StateCode.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void ifCSVHeaderIncorrect_ForStateCensus_WillReturnCustomException() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(37, stateCensusAnalyser.loadDataForState("./src/main/resources/StateCode.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
