@@ -30,13 +30,19 @@ public class StateAnalyzerTest {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 	@Test
 	public void ifCsvFileNotCorrect_throwException_CSVFileIsNotCorrect() throws Exception {
+=======
+	@Test
+	public void givenCsv_WhenLoadedIfIncorrectHeaderRaiseException_ShouldReturnException() throws Exception {
+>>>>>>> UC1
 		try {
 			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
 			Assert.assertEquals(29, stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
 		}catch(StateCensusException e) {
+<<<<<<< HEAD
 			e.printStackTrace();
 		}
 	}
@@ -56,6 +62,8 @@ public class StateAnalyzerTest {
 			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
 			Assert.assertEquals(29,stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
 		}catch(StateCensusException e) {
+=======
+>>>>>>> UC1
 			e.printStackTrace();e.getMessage();
 		}
 	}
