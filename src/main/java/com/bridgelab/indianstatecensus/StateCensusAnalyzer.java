@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
 import com.opencsv.CSVReader;
 
 public class StateCensusAnalyzer {
@@ -20,6 +21,7 @@ public static List<StateCvsCensusData> stateCensusList = new ArrayList<>();
 	public int loadData(String filePath) throws Exception{
 
 			stateCensusList = new ArrayList<>();
+			try {
 			CSVReader reader = new CSVReader(new FileReader(filePath));  
 			List<String[]> data = reader.readAll();
 			data.stream().forEach(n->{
@@ -32,6 +34,10 @@ public static List<StateCvsCensusData> stateCensusList = new ArrayList<>();
 	            	stateCensusList.add(new StateCvsCensusData(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
 			});
 			reader.close();
-		return stateCensusList.size();
-	}
+		    return stateCensusList.size();
+			}
+	        catch(FileNotFoundException e) {
+	        throw new StateCensusException(e.getMessage(),StateCensusException.ExceptionType.File_Not_Found);
+	        }
+	}		
 }
