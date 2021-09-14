@@ -1,15 +1,11 @@
 package com.bridgelab.indianstatecensus;
-import java.io.File;
-//import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,6 +36,8 @@ public static List<StateCvsCensusData> stateCensusList = new ArrayList<>();
 	        throw new StateCensusException(e.getMessage(),StateCensusException.ExceptionType.File_Not_Found);
 	        }catch(IllegalStateException  e) {
 				throw new StateCensusException(e.getMessage(),StateCensusException.ExceptionType.Parse_Error);
+			}catch(InputMismatchException e) {
+				throw new StateCensusException(e.getMessage(), StateCensusException.ExceptionType.Parse_Error);
 			}
 	}		
 }
