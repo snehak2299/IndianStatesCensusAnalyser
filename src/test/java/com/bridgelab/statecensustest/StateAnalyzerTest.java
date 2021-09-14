@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.bridgelab.indianstatecensus.StateCensusAnalyzer;
+import com.bridgelab.indianstatecensus.StateCensusException;
 
 public class StateAnalyzerTest {
 	@Test
@@ -14,9 +15,19 @@ public class StateAnalyzerTest {
         try {
 			asc.loadData("./src/main/resources/IndiaStateCensusData.csv");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();e.getMessage();
 		}
         Assert.assertEquals(29,asc.stateCensusList.size());
     }
+	
+	
+	@Test
+	public void ifCsvFileNotDetected_throwException_CSVFileIsNotDtected() throws Exception {
+		try {
+			StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+			Assert.assertEquals(29, stateCensusAnalyser.loadData("./src/main/resources/IndiaStateCensusData.csv"));
+		}catch(StateCensusException e) {
+			e.printStackTrace();
+		}
+	}
 }
